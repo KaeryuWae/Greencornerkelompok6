@@ -1,0 +1,1737 @@
+/* GreenCorner - Website Kebun Mini Kelas X-TE 3 SMK Negeri 2 Purwokerto */
+/* Tema: Fresh Nature */
+
+/* === 1. TOKEN WARNA & VARIABEL === */
+:root {
+  --bg: #F1F5E6;
+  --surface: #FAFCF3;
+  --surface2: #E3EAD1;
+  --ink: #173021;
+  --ink2: #43604D;
+  --head: #1A4A2A;
+  --leaf: #2D6A3E;
+  --on-leaf: #FFFFFF;
+  --sprout: #79B94C;
+  --slate: #4B5F91;
+  --aster: #8452A8;
+  --aster-tint: #E9DDF3;
+  --asoka: #C23C57;
+  --line: #C6D3B1;
+  --focus: #3F5FA8;
+  --overlay: rgba(12, 26, 17, 0.9);
+  --header-bg: rgba(241, 245, 230, 0.88);
+  --font-head: "Baloo 2", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Nunito", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --radius-leaf-1: 12% 50% 12% 50%;
+  --radius-leaf-2: 50% 12% 50% 12%;
+  --header-height: 70px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1A12;
+    --surface: #152419;
+    --surface2: #1D3122;
+    --ink: #E3EEDB;
+    --ink2: #A7BCA9;
+    --head: #CDE8BC;
+    --leaf: #6DBE73;
+    --on-leaf: #0E1A12;
+    --sprout: #93D06A;
+    --slate: #8FA6DA;
+    --aster: #C79AE0;
+    --aster-tint: #2B2036;
+    --asoka: #F08AA0;
+    --line: #2C4331;
+    --focus: #9DB4EE;
+    --header-bg: rgba(14, 26, 18, 0.9);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0E1A12;
+  --surface: #152419;
+  --surface2: #1D3122;
+  --ink: #E3EEDB;
+  --ink2: #A7BCA9;
+  --head: #CDE8BC;
+  --leaf: #6DBE73;
+  --on-leaf: #0E1A12;
+  --sprout: #93D06A;
+  --slate: #8FA6DA;
+  --aster: #C79AE0;
+  --aster-tint: #2B2036;
+  --asoka: #F08AA0;
+  --line: #2C4331;
+  --focus: #9DB4EE;
+  --header-bg: rgba(14, 26, 18, 0.9);
+  color-scheme: dark;
+}
+
+/* === 2. RESET & DASAR === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100%;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.65;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Aksesibilitas: Lewati ke konten */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--leaf);
+  color: var(--on-leaf);
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  z-index: 999;
+  font-weight: 700;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Tipografi Ramah */
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  color: var(--head);
+  line-height: 1.15;
+  font-weight: 700;
+  text-transform: none; /* Judul huruf kecil biasa, bukan kapital semua */
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+}
+
+p {
+  max-width: 65ch;
+}
+
+.lead {
+  font-size: 1.15rem;
+  color: var(--ink2);
+  line-height: 1.6;
+}
+
+/* Layout Container */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+}
+
+.page-main {
+  flex: 1 0 auto;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+/* === 3. HEADER & NAVIGASI === */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
+  background-color: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  padding-top: env(safe-area-inset-top);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--head);
+  min-height: 44px;
+}
+
+.brand-icon {
+  width: 28px;
+  height: 28px;
+  fill: var(--sprout);
+  filter: drop-shadow(0 2px 4px rgba(45, 106, 62, 0.2));
+}
+
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink2);
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--head);
+  background-color: var(--surface2);
+}
+
+.nav-link[aria-current="page"] {
+  background-color: var(--leaf);
+  color: var(--on-leaf);
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle, .menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--ink);
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover, .menu-toggle:hover {
+  background-color: var(--surface2);
+  transform: translateY(-1px);
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* Navigasi Ponsel (Drawer / Overlay) */
+.mobile-nav-dialog {
+  display: none;
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--overlay);
+  backdrop-filter: blur(8px);
+  z-index: 99;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.mobile-nav-dialog.is-open {
+  display: block;
+}
+
+.mobile-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--surface);
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0.5rem;
+  min-height: 52px;
+  border-radius: 12px;
+  background-color: var(--surface2);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.mobile-nav-link[aria-current="page"] {
+  background-color: var(--leaf);
+  color: var(--on-leaf);
+}
+
+/* === 4. TOMBOL & AKSEN === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.65rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.btn-primary {
+  background-color: var(--leaf);
+  color: var(--on-leaf);
+}
+
+.btn-primary:hover {
+  background-color: #235431;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 106, 62, 0.25);
+}
+
+:root[data-theme="dark"] .btn-primary:hover {
+  background-color: #7ece85;
+}
+
+.btn-secondary {
+  background-color: var(--surface);
+  color: var(--head);
+  border: 2px solid var(--leaf);
+}
+
+.btn-secondary:hover {
+  background-color: var(--surface2);
+  transform: translateY(-2px);
+}
+
+.pill-badge {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  background-color: var(--surface2);
+  color: var(--head);
+  border: 1px solid var(--line);
+}
+
+/* === 5. HALAMAN INDEKS (SAMPUL) === */
+.hero-cover {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2.5rem 0;
+}
+
+.cover-bg-leaf-1, .cover-bg-leaf-2 {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.08;
+  z-index: 0;
+  fill: var(--leaf);
+}
+:root[data-theme="dark"] .cover-bg-leaf-1,
+:root[data-theme="dark"] .cover-bg-leaf-2 {
+  opacity: 0.06;
+}
+
+.cover-bg-leaf-1 {
+  width: 550px;
+  height: 550px;
+  top: -100px;
+  left: -120px;
+  transform: rotate(-25deg);
+}
+
+.cover-bg-leaf-2 {
+  width: 600px;
+  height: 600px;
+  bottom: -150px;
+  right: -100px;
+  transform: rotate(35deg);
+}
+
+.cover-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  position: relative;
+  z-index: 1;
+}
+
+.cover-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.cover-title {
+  font-size: clamp(3.4rem, 11vw, 7rem);
+  color: var(--head);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.cover-subtitle {
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  color: var(--ink2);
+  line-height: 1.4;
+  max-width: 48ch;
+}
+
+.cover-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--head);
+}
+
+.leaf-frame {
+  overflow: hidden;
+  border-radius: var(--radius-leaf-1);
+  box-shadow: 0 12px 35px rgba(23, 48, 33, 0.15);
+  border: 4px solid var(--surface);
+  background: var(--surface2);
+}
+
+.leaf-frame-alt {
+  border-radius: var(--radius-leaf-2);
+}
+
+.cover-photo-wrapper {
+  position: relative;
+}
+
+.cover-photo-wrapper .leaf-frame {
+  aspect-ratio: 4 / 3;
+}
+
+.cover-photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 50%;
+}
+
+/* Animasi masuk di sampul */
+@media (prefers-reduced-motion: no-preference) {
+  .cover-content > * {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .cover-title { animation-delay: 0.1s; }
+  .cover-subtitle { animation-delay: 0.25s; }
+  .cover-meta { animation-delay: 0.35s; }
+  .cover-btn-wrap { animation-delay: 0.45s; }
+
+  .cover-photo-wrapper {
+    opacity: 0;
+    transform: scale(0.92) rotate(-3deg);
+    animation: photoUnfold 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes photoUnfold {
+    to { opacity: 1; transform: scale(1) rotate(0deg); }
+  }
+}
+
+/* === 6. HALAMAN HOME === */
+.home-hero {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 4rem;
+}
+
+.photo-mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto auto;
+  gap: 0.85rem;
+}
+
+.mosaic-item {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface2);
+  border: 2px solid var(--surface);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+
+.mosaic-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mosaic-big {
+  grid-column: span 2;
+  aspect-ratio: 16 / 9;
+}
+
+.mosaic-tall {
+  aspect-ratio: 3 / 4;
+}
+
+.mosaic-square {
+  aspect-ratio: 1 / 1;
+}
+
+/* Jelajahi Website: Daftar Bergaris */
+.explore-section {
+  margin-top: 3rem;
+}
+
+.explore-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--line);
+  margin-top: 1.5rem;
+}
+
+.explore-row {
+  display: grid;
+  grid-template-columns: 280px 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.35rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
+  border-radius: 8px;
+}
+
+.explore-row:hover {
+  background-color: var(--surface);
+  padding-left: 1rem;
+}
+
+.explore-name {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--head);
+}
+
+.explore-desc {
+  color: var(--ink2);
+  font-size: 1rem;
+}
+
+.explore-arrow {
+  color: var(--leaf);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+/* === 7. HALAMAN TENTANG === */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
+}
+
+.about-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.content-block h2 {
+  margin-bottom: 0.75rem;
+}
+
+.bullet-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.bullet-list li {
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.65em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--sprout);
+}
+
+.project-summary-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.summary-photo {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  aspect-ratio: 16 / 9;
+}
+
+.summary-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.summary-data-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.95rem;
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-label {
+  color: var(--ink2);
+  font-weight: 600;
+}
+
+.summary-value {
+  color: var(--ink);
+  font-weight: 700;
+  text-align: right;
+}
+
+/* === 8. HALAMAN KELOMPOK === */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.member-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.25rem 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+.member-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.member-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.member-info p {
+  color: var(--ink2);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.class-note {
+  margin-top: 2.5rem;
+  text-align: center;
+  color: var(--ink2);
+  font-weight: 600;
+}
+
+/* === 9. HALAMAN ALAT DAN BAHAN === */
+.tools-materials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.spec-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 1.75rem;
+}
+
+.spec-panel h2 {
+  font-size: 1.45rem;
+  margin-bottom: 1rem;
+}
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.check-item:last-child {
+  margin-bottom: 0;
+}
+
+.check-icon {
+  width: 22px;
+  height: 22px;
+  background: var(--leaf);
+  color: var(--on-leaf);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+/* Langkah Kerja Berurutan dengan Garis Penghubung */
+.steps-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.steps-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.steps-list::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+  width: 2px;
+  background-color: var(--line);
+  z-index: 0;
+}
+
+.step-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+
+.step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--leaf);
+  color: var(--on-leaf);
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(45, 106, 62, 0.2);
+}
+
+.step-body h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.35rem;
+}
+
+.step-photos-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.step-photo-figure {
+  margin: 0;
+}
+
+.step-photo-figure img {
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  width: 100%;
+}
+
+.step-photo-figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ink2);
+  text-align: center;
+}
+
+/* === 10. HALAMAN TANAMAN === */
+.plant-section {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
+  margin-top: 2.5rem;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.plant-section:last-of-type {
+  border-bottom: none;
+}
+
+.plant-section.reverse {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.plant-section.reverse .plant-visual-col {
+  order: 2;
+}
+
+.plant-section.reverse .plant-info-col {
+  order: 1;
+}
+
+.plant-visual-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plant-frame {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 3 / 4;
+}
+
+.plant-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 55%;
+}
+
+.plant-frame.aster-frame {
+  background-color: var(--aster-tint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.plant-caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--ink2);
+  font-style: italic;
+}
+
+.plant-header {
+  margin-bottom: 1.25rem;
+}
+
+.plant-header h2 {
+  font-size: 2.2rem;
+  color: var(--head);
+}
+
+.plant-header.asoka-accent h2 {
+  color: var(--head);
+}
+.plant-header.asoka-accent .sci-name {
+  color: var(--asoka);
+}
+
+.plant-header.aster-accent .sci-name {
+  color: var(--aster);
+}
+
+.sci-name {
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 600;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.fast-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1.25rem 0 1.75rem;
+}
+
+.fact-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+}
+
+.fact-item strong {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink2);
+  margin-bottom: 0.2rem;
+}
+
+.fact-item span {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Tabs Tanaman (ARIA Tablist) */
+.plant-tabs {
+  margin-top: 1rem;
+}
+
+.tab-list {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 0;
+}
+
+.tab-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px 12px 0 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink2);
+  background: transparent;
+  min-height: 44px;
+  border: 1px solid transparent;
+  border-bottom: none;
+  margin-bottom: -2px;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: var(--head);
+  background: var(--surface2);
+}
+
+.tab-btn[aria-selected="true"] {
+  color: var(--head);
+  background: var(--surface);
+  border-color: var(--line);
+  border-bottom: 2px solid var(--surface);
+  font-weight: 800;
+}
+
+.tab-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  padding: 1.25rem;
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+.tab-panel ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tab-panel li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.tab-panel li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sprout);
+}
+
+.plant-general-note {
+  margin-top: 2.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--surface2);
+  border-radius: 12px;
+  border-left: 4px solid var(--sprout);
+  font-size: 0.95rem;
+  color: var(--ink2);
+}
+
+/* === 11. HALAMAN DOKUMENTASI & LIGHTBOX === */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.gallery-thumb {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--surface2);
+}
+
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-thumb img {
+  transform: scale(1.03);
+}
+
+.gallery-caption {
+  padding: 0.85rem 1rem;
+  font-size: 0.925rem;
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: var(--overlay);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.lightbox-modal.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-dialog {
+  position: relative;
+  max-width: 950px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-media {
+  max-height: 75vh;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.lightbox-media img {
+  max-height: 75vh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.lightbox-caption-bar {
+  margin-top: 1rem;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  max-width: 700px;
+}
+
+.lightbox-btn {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+.lightbox-close {
+  top: -55px;
+  right: 0;
+}
+
+.lightbox-prev {
+  left: -65px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox-next {
+  right: -65px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* === 12. HALAMAN FAQ & CHATBOT === */
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.accordion-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.15rem 1.25rem;
+  text-align: left;
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--head);
+  min-height: 48px;
+  gap: 1rem;
+}
+
+.accordion-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.accordion-trigger[aria-expanded="true"] .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+}
+
+.accordion-content.is-open {
+  grid-template-rows: 1fr;
+}
+
+.accordion-inner {
+  overflow: hidden;
+}
+
+.accordion-body {
+  padding: 0 1.25rem 1.25rem;
+  color: var(--ink);
+}
+
+/* Chat Assistant Panel (Sticky di desktop) */
+.chat-sticky-wrap {
+  position: sticky;
+  top: calc(var(--header-height) + 1.5rem);
+}
+
+.chat-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  max-height: calc(100vh - var(--header-height) - 3rem);
+  overflow: hidden;
+}
+
+.chat-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-title {
+  font-family: var(--font-head);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--head);
+}
+
+.chat-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #B5B5B5;
+}
+
+.status-dot.active { background-color: var(--sprout); }
+.status-dot.fallback { background-color: var(--slate); }
+.status-dot.error { background-color: #E24B4B; }
+
+.chat-history {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.chat-msg {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+}
+
+.chat-msg.user {
+  align-self: flex-end;
+}
+
+.chat-msg.assistant {
+  align-self: flex-start;
+}
+
+.chat-bubble {
+  padding: 0.75rem 1rem;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.chat-msg.user .chat-bubble {
+  background-color: var(--leaf);
+  color: var(--on-leaf);
+  border-bottom-right-radius: 4px;
+}
+
+.chat-msg.assistant .chat-bubble {
+  background-color: var(--surface2);
+  color: var(--ink);
+  border-bottom-left-radius: 4px;
+  border: 1px solid var(--line);
+}
+
+.chat-source-tag {
+  font-size: 0.75rem;
+  color: var(--ink2);
+  margin-top: 0.25rem;
+  font-weight: 600;
+}
+
+.chat-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.suggestion-btn {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 0.8rem;
+  color: var(--head);
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.suggestion-btn:hover {
+  background: var(--surface2);
+  border-color: var(--leaf);
+}
+
+.page-link-btn {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px dashed var(--leaf);
+  font-size: 0.8rem;
+  color: var(--leaf);
+  font-weight: 700;
+  text-decoration: underline;
+  margin-top: 0.35rem;
+  display: inline-block;
+}
+
+.chat-system-note {
+  align-self: center;
+  background: var(--surface2);
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.8rem;
+  color: var(--ink2);
+  text-align: center;
+  max-width: 90%;
+}
+
+.chat-waiting-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background: var(--surface2);
+  border-top: 1px solid var(--line);
+}
+
+.btn-stop {
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  background: #E24B4B;
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.chat-input-form {
+  padding: 0.85rem;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface2);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.95rem;
+  min-height: 44px;
+}
+
+.chat-input:focus {
+  outline: 2px solid var(--focus);
+}
+
+.chat-send-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--leaf);
+  color: var(--on-leaf);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.chat-send-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.chat-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chat-footer-note {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: var(--ink2);
+  line-height: 1.4;
+}
+
+/* === 13. HALAMAN PENUTUP === */
+.conclusion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.conclusion-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 1.75rem;
+}
+
+.thanks-block {
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.thanks-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  margin: 1.5rem 0;
+}
+
+.thanks-pill {
+  padding: 0.5rem 1.15rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--head);
+}
+
+/* === 14. PAGER (SEBELUMNYA / BERIKUTNYA) & FOOTER === */
+.page-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+  gap: 1rem;
+}
+
+.pager-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--head);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.pager-btn:hover {
+  background: var(--surface2);
+  border-color: var(--leaf);
+}
+
+.pager-btn.next {
+  margin-left: auto;
+  background: var(--leaf);
+  color: var(--on-leaf);
+  border-color: var(--leaf);
+}
+
+.pager-btn.next:hover {
+  background: #235431;
+}
+
+:root[data-theme="dark"] .pager-btn.next:hover {
+  background: #7ece85;
+}
+
+.site-footer {
+  background-color: var(--surface);
+  border-top: 1px solid var(--line);
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--ink2);
+  margin-top: auto;
+}
+
+/* Tombol Kembali ke Atas */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--leaf);
+  color: var(--on-leaf);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.18);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: all 0.25s ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: #235431;
+  transform: translateY(-2px);
+}
+
+/* === 15. RESPONSIVE BREAKPOINTS === */
+@media (max-width: 1010px) {
+  .nav-desktop {
+    display: none;
+  }
+  .menu-toggle {
+    display: inline-flex;
+  }
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+  .chat-sticky-wrap {
+    position: static;
+  }
+  .chat-panel {
+    height: 520px;
+  }
+}
+
+@media (max-width: 860px) {
+  .cover-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .cover-content {
+    align-items: center;
+  }
+  .cover-photo-wrapper {
+    order: -1;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .home-hero {
+    grid-template-columns: 1fr;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .steps-layout {
+    grid-template-columns: 1fr;
+  }
+  .plant-section, .plant-section.reverse {
+    grid-template-columns: 1fr;
+  }
+  .plant-section.reverse .plant-visual-col {
+    order: 0;
+  }
+  .plant-section.reverse .plant-info-col {
+    order: 0;
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .lightbox-prev {
+    left: 10px;
+  }
+  .lightbox-next {
+    right: 10px;
+  }
+}
+
+@media (max-width: 760px) {
+  .members-grid {
+    grid-template-columns: 1fr;
+  }
+  .tools-materials-grid {
+    grid-template-columns: 1fr;
+  }
+  .conclusion-grid {
+    grid-template-columns: 1fr;
+  }
+  .fast-facts {
+    grid-template-columns: 1fr;
+  }
+  .explore-row {
+    grid-template-columns: 1fr auto;
+  }
+  .explore-desc {
+    grid-column: span 2;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  .page-pager {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pager-btn.next {
+    margin-left: 0;
+  }
+}
