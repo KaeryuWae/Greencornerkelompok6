@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Uji Chatbot Sederhana GreenCorner</title>
+</head>
+<body>
+  <h1>Hasil Uji Chatbot Sederhana</h1>
+  <pre id="output"></pre>
+
+  <script src="js/chatbot-sederhana.js"></script>
+  <script>
+    const tests = [
+      { q: "Halo", expect: "Halo! Aku asisten GreenCorner" },
+      { q: "Apa itu GreenCorner?", expect: "GreenCorner adalah proyek kebun mini" },
+      { q: "apa itu asoka", expect: "Asoka (Ixora) adalah semak" },
+      { q: "Cara merawat Aster", expect: "Ringkasan merawat Aster" },
+      { q: "Bagaimana cara menyiram asoka?", expect: "Jaga tanah Asoka tetap lembap" },
+      { q: "Siapa anggota kelompok?", expect: "Kukuh Dwi Aditya" },
+      { q: "Alat dan bahan apa saja?", expect: "skop mini" },
+      { q: "langkah menanam", expect: "Langkah kerja kami" },
+      { q: "kenapa perlu mengukur lahan?", expect: "Pengukuran Lahan" },
+      { q: "Apa fungsi sekam?", expect: "sekam" },
+      { q: "apa tujuan proyek ini?", expect: "Tujuan GreenCorner" },
+      { q: "manfaat proyek ini", expect: "Tujuan GreenCorner" },
+      { q: "kapan proyek ini dibuat", expect: "Tanggal pelaksanaan belum dicatat" },
+      { q: "harga bibitnya berapa", expect: "Rincian biaya belum dicatat" },
+      { q: "siapa yang menyiram tanaman", expect: "Pembagian tugas tiap anggota belum dicatat" },
+      { q: "pr matematika bab 3", expect: "Maaf, chatbot sederhana belum punya jawaban" },
+      { q: "kenapa aster tidak berbunga", expect: "Kalau Aster sedikit berbunga" },
+      { q: "ada kutu putih di asoka", expect: "kutu putih" },
+      { q: "berapa jarak tanam", expect: "30 sampai 50 cm" },
+      { q: "pagi atau sore siramnya?", expect: "Waktu terbaik menyiram" },
+      { q: "ai kena limit gimana", expect: "Asisten ini mencoba memakai AI lebih dulu" },
+      { q: "bagaimana cara ganti mode gelap", expect: "Ketuk tombol bulan atau matahari" },
+      { q: "kelas dan sekolah mana?", expect: "SMK Negeri 2 Purwokerto" },
+      { q: "tanaman apa saja yang ditanam?", expect: "Tanaman utama proyek kami adalah bunga Asoka dan bunga Aster" },
+      { q: "cara memupuk asoka", expect: "Beri Asoka kompos atau pupuk organik" },
+      { q: "musim hujan gimana", expect: "Musim hujan: pastikan drainase" },
+      { q: "terima kasih", expect: "Sama-sama!" },
+      { q: "asoka dan aster beda apa", expect: "**Asoka**" }
+    ];
+
+    let passed = 0;
+    let failed = 0;
+    const log = [];
+
+    // Test 1: Pertanyaan independen
+    tests.forEach((t, i) => {
+      const bot = new SimpleChatbot();
+      const res = bot.processMessage(t.q);
+      const ok = res.text.toLowerCase().includes(t.expect.toLowerCase());
+      if (ok) {
+        passed++;
+        log.push(`[PASS] ${i+1}. "${t.q}" -> OK`);
+      } else {
+        failed++;
+        log.push(`[FAIL] ${i+1}. "${t.q}" -> Expected to include "${t.expect}", got: "${res.text.slice(0, 80)}..."`);
+      }
+    });
+
+    // Test 2: Uji konteks berurutan
+    const seqBot = new SimpleChatbot();
+    const r1 = seqBot.processMessage("cara merawat asoka");
+    const r2 = seqBot.processMessage("kenapa daun menguning?");
+    const r3 = seqBot.processMessage("Kenapa daun Aster menguning");
+
+    const ctx1Ok = r2.text.includes("Daun Asoka menguning biasanya karena tanah terlalu basah");
+    const ctx2Ok = r3.text.includes("Aster layu atau menguning biasanya karena akar tergenang");
+
+    if (ctx1Ok && ctx2Ok) {
+      passed += 2;
+      log.push(`[PASS] Uji konteks berurutan: "cara merawat asoka" -> "kenapa daun menguning?" (Asoka) -> "Kenapa daun Aster menguning" (Aster) -> OK`);
+    } else {
+      failed += 2;
+      log.push(`[FAIL] Uji konteks berurutan: ctx1=${ctx1Ok}, ctx2=${ctx2Ok}`);
+    }
+
+    log.push(`\nTOTAL: Passed ${passed}, Failed ${failed}`);
+    document.getElementById('output').textContent = log.join('\n');
+  </script>
+</body>
+</html>

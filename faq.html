@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Pertanyaan umum (FAQ) dan asisten tanya jawab interaktif untuk kebun mini GreenCorner SMK Negeri 2 Purwokerto.">
+  <title>FAQ &amp; Asisten Tanya Jawab - GreenCorner</title>
+
+  <!-- Google Fonts: Baloo 2 & Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <!-- Header & Navigasi Bersama -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="home.html" class="brand" aria-label="GreenCorner Beranda">
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/>
+        </svg>
+        <span>GreenCorner</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Menu Utama">
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="tentang.html" class="nav-link">Tentang</a>
+        <a href="kelompok.html" class="nav-link">Kelompok</a>
+        <a href="alat-bahan.html" class="nav-link">Alat dan Bahan</a>
+        <a href="tanaman.html" class="nav-link">Tanaman</a>
+        <a href="dokumentasi.html" class="nav-link">Dokumentasi</a>
+        <a href="faq.html" class="nav-link" aria-current="page">FAQ</a>
+        <a href="penutup.html" class="nav-link">Penutup</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="theme-toggle" aria-label="Beralih ke mode gelap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button type="button" class="menu-toggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-nav">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigasi Mobile Drawer -->
+  <div id="mobile-nav" class="mobile-nav-dialog" role="dialog" aria-modal="true" aria-label="Menu navigasi mobile">
+    <div class="mobile-nav-grid">
+      <a href="home.html" class="mobile-nav-link">Home</a>
+      <a href="tentang.html" class="mobile-nav-link">Tentang</a>
+      <a href="kelompok.html" class="mobile-nav-link">Kelompok</a>
+      <a href="alat-bahan.html" class="mobile-nav-link">Alat dan Bahan</a>
+      <a href="tanaman.html" class="mobile-nav-link">Tanaman</a>
+      <a href="dokumentasi.html" class="mobile-nav-link">Dokumentasi</a>
+      <a href="faq.html" class="mobile-nav-link" aria-current="page">FAQ</a>
+      <a href="penutup.html" class="mobile-nav-link">Penutup</a>
+    </div>
+  </div>
+
+  <main id="main-content" class="page-main">
+    <div class="container">
+      <header style="margin-bottom: 2rem;">
+        <h1 style="margin-bottom: 0.5rem;">FAQ</h1>
+        <p class="lead">Jawaban cepat untuk pertanyaan umum, atau tanya langsung ke asisten GreenCorner.</p>
+      </header>
+
+      <div class="faq-grid">
+        <!-- Kolom Kiri: Pertanyaan Umum (Akordeon 8 Pertanyaan) -->
+        <section aria-labelledby="faq-list-heading">
+          <h2 id="faq-list-heading" style="margin-bottom: 0.5rem;">Pertanyaan umum</h2>
+
+          <div class="accordion-list">
+            <!-- Tanya 1 -->
+            <article class="accordion-item">
+              <button type="button" class="accordion-trigger" id="acc-btn-1" aria-expanded="false" aria-controls="acc-content-1">
+                <span>Apa itu GreenCorner?</span>
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="acc-content-1" class="accordion-content" role="region" aria-labelledby="acc-btn-1">
+                <div class="accordion-inner">
+                  <div class="accordion-body">
+                    <p>GreenCorner adalah proyek kebun mini kelompok kami dari kelas X-TE 3. Kami menanam bunga Asoka dan Aster di bedeng sempit sepanjang dinding.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Tanya 2 -->
+            <article class="accordion-item">
+              <button type="button" class="accordion-trigger" id="acc-btn-2" aria-expanded="false" aria-controls="acc-content-2">
+                <span>Siapa saja anggota kelompok?</span>
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="acc-content-2" class="accordion-content" role="region" aria-labelledby="acc-btn-2">
+                <div class="accordion-inner">
+                  <div class="accordion-body">
+                    <p>Kukuh Dwi Aditya, Levandra Fulvian Haidar, Lilin Revalina Afriliani, Marissa Adelia Putri, Marwa Ananta Rizqullah, dan Maulana Dzaefa Ibrahim.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Tanya 3 -->
+            <article class="accordion-item">
+              <button type="button" class="accordion-trigger" id="acc-btn-3" aria-expanded="false" aria-controls="acc-content-3">
+                <span>Alat dan bahan apa yang dipakai?</span>
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="acc-content-3" class="accordion-content" role="region" aria-labelledby="acc-btn-3">
+                <div class="accordion-inner">
+                  <div class="accordion-body">
+                    <p>Alatnya skop mini. Bahannya bunga Asoka dan bunga Aster.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Tanya 4 -->
+            <article class="accordion-item">
+              <button type="button" class="accordion-trigger" id="acc-btn-4" aria-expanded="false" aria-controls="acc-content-4">
+                <span>Bagaimana cara merawat Asoka?</span>
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="acc-content-4" class="accordion-content" role="region" aria-labelledby="acc-btn-4">
+                <div class="accordion-inner">
+                  <div class="accordion-body">
+                    <p>Beri matahari penuh, siram saat tanah mulai kering tanpa membuatnya becek, pakai tanah gembur yang sedikit asam, beri kompos tiap 1 sampai 2 bulan, dan pangkas ringan setelah bunga layu.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Tanya 5 -->
+            <article class="accordion-item">
+              <button type="button" class="accordion-trigger" id="acc-btn-5" aria-expanded="false" aria-controls="acc-content-5">
+                <span>Bagaimana cara merawat Aster?</span>
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="acc-content-5" class="accordion-content" role="region" aria-labelledby="acc-btn-5">
+                <div class="accordion-inner">
+                  <div class="accordion-body">
+                    <p>Beri matahari penuh atau teduh sebagian, siram teratur ke pangkal tanaman, pakai tanah subur dan gembur, beri kompos tiap 3 sampai 4 minggu, dan buang bunga yang layu.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Tanya 6 -->
+            <article class="accordion-item">
+              <button type="button" class="accordion-trigger" id="acc-btn-6" aria-expanded="false" aria-controls="acc-content-6">
+                <span>Kenapa daun atau bunga bisa layu?</span>
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="acc-content-6" class="accordion-content" role="region" aria-labelledby="acc-btn-6">
+                <div class="accordion-inner">
+                  <div class="accordion-body">
+                    <p>Penyebab paling umum: tanah terlalu basah atau terlalu kering, kurang cahaya, atau serangan hama. Cek kelembapan tanah dulu, lalu pastikan tanaman mendapat cukup matahari.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Tanya 7 -->
+            <article class="accordion-item">
+              <button type="button" class="accordion-trigger" id="acc-btn-7" aria-expanded="false" aria-controls="acc-content-7">
+                <span>Seberapa sering tanaman disiram?</span>
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="acc-content-7" class="accordion-content" role="region" aria-labelledby="acc-btn-7">
+                <div class="accordion-inner">
+                  <div class="accordion-body">
+                    <p>Sebagai pedoman, siram saat permukaan tanah mulai kering, biasanya pagi atau sore. Saat hujan deras, kurangi siraman.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Tanya 8 -->
+            <article class="accordion-item">
+              <button type="button" class="accordion-trigger" id="acc-btn-8" aria-expanded="false" aria-controls="acc-content-8">
+                <span>Bagaimana cara kerja asisten tanya jawab?</span>
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div id="acc-content-8" class="accordion-content" role="region" aria-labelledby="acc-btn-8">
+                <div class="accordion-inner">
+                  <div class="accordion-body">
+                    <p>Asisten mencoba memakai AI lebih dulu. Kalau AI tidak tersedia atau kena batas pemakaian, jawaban otomatis dialihkan ke chatbot sederhana yang sudah dibekali pengetahuan tentang proyek ini.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Kolom Kanan: Kotak Chat "Tanya GreenCorner" (Sticky di Desktop) -->
+        <aside class="chat-sticky-wrap" aria-labelledby="chat-heading">
+          <div class="chat-panel">
+            <div class="chat-header">
+              <h2 id="chat-heading" class="chat-title">Tanya GreenCorner</h2>
+              <div class="chat-status">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span class="status-text">Memeriksa AI…</span>
+                <span class="status-action"></span>
+              </div>
+            </div>
+
+            <!-- Riwayat Percakapan -->
+            <div class="chat-history" role="log" aria-live="polite"></div>
+
+            <!-- Bar Tunggu / Stop -->
+            <div class="chat-waiting-bar" style="display: none;">
+              <span style="font-size: 0.85rem; color: var(--ink2); font-style: italic;">Sedang memproses jawaban…</span>
+              <button type="button" class="btn-stop">Berhenti</button>
+            </div>
+
+            <!-- Formulir Input Chat -->
+            <form class="chat-input-form">
+              <input type="text" class="chat-input" placeholder="Tanya tentang kebun mini kami…" aria-label="Ketik pertanyaan untuk asisten GreenCorner" maxlength="300" required>
+              <button type="submit" class="chat-send-btn" aria-label="Kirim pertanyaan">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </form>
+          </div>
+
+          <p class="chat-footer-note">Asisten mencoba memakai AI lebih dulu. Kalau AI tidak tersedia atau kena batas pemakaian, otomatis beralih ke chatbot sederhana.</p>
+        </aside>
+      </div>
+
+      <!-- Pager Navigasi Bawah -->
+      <nav class="page-pager" aria-label="Navigasi Halaman">
+        <a href="dokumentasi.html" class="pager-btn prev">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Sebelumnya: Dokumentasi</span>
+        </a>
+        <a href="penutup.html" class="pager-btn next">
+          <span>Berikutnya: Penutup</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>GreenCorner, proyek kebun mini kelas X-TE 3, SMK Negeri 2 Purwokerto</p>
+    </div>
+  </footer>
+
+  <button type="button" class="back-to-top" aria-label="Kembali ke atas">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="js/main.js"></script>
+  <script src="js/chatbot-sederhana.js"></script>
+  <script src="js/chat-ui.js"></script>
+</body>
+</html>

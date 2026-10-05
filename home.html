@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Selamat datang di GreenCorner - proyek kebun mini bunga Asoka dan Aster di bedeng sempit sepanjang dinding.">
+  <title>Home - GreenCorner</title>
+
+  <!-- Google Fonts: Baloo 2 & Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Lewati ke konten utama</a>
+
+  <!-- Header & Navigasi Bersama -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="home.html" class="brand" aria-label="GreenCorner Beranda">
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/>
+        </svg>
+        <span>GreenCorner</span>
+      </a>
+
+      <nav class="nav-desktop" aria-label="Menu Utama">
+        <a href="home.html" class="nav-link" aria-current="page">Home</a>
+        <a href="tentang.html" class="nav-link">Tentang</a>
+        <a href="kelompok.html" class="nav-link">Kelompok</a>
+        <a href="alat-bahan.html" class="nav-link">Alat dan Bahan</a>
+        <a href="tanaman.html" class="nav-link">Tanaman</a>
+        <a href="dokumentasi.html" class="nav-link">Dokumentasi</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="penutup.html" class="nav-link">Penutup</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="theme-toggle" aria-label="Beralih ke mode gelap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button type="button" class="menu-toggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-nav">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigasi Mobile Drawer -->
+  <div id="mobile-nav" class="mobile-nav-dialog" role="dialog" aria-modal="true" aria-label="Menu navigasi mobile">
+    <div class="mobile-nav-grid">
+      <a href="home.html" class="mobile-nav-link" aria-current="page">Home</a>
+      <a href="tentang.html" class="mobile-nav-link">Tentang</a>
+      <a href="kelompok.html" class="mobile-nav-link">Kelompok</a>
+      <a href="alat-bahan.html" class="mobile-nav-link">Alat dan Bahan</a>
+      <a href="tanaman.html" class="mobile-nav-link">Tanaman</a>
+      <a href="dokumentasi.html" class="mobile-nav-link">Dokumentasi</a>
+      <a href="faq.html" class="mobile-nav-link">FAQ</a>
+      <a href="penutup.html" class="mobile-nav-link">Penutup</a>
+    </div>
+  </div>
+
+  <main id="main-content" class="page-main">
+    <div class="container">
+      <!-- Hero Dua Kolom -->
+      <section class="home-hero" aria-labelledby="home-title">
+        <div>
+          <span class="pill-badge" style="margin-bottom: 1rem;">Kebun Mini Kelas X-TE 3</span>
+          <h1 id="home-title" style="margin-bottom: 1.25rem;">Selamat datang di GreenCorner</h1>
+          <p class="lead" style="margin-bottom: 2rem;">GreenCorner adalah kebun mini bunga Asoka dan Aster yang kami tanam di bedeng sempit sepanjang dinding. Di sini kamu bisa melihat proses, alat, bahan, dan hasilnya.</p>
+          <a href="tentang.html" class="btn btn-primary">
+            <span>Mulai dari Tentang</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- Mosaik 4 Foto -->
+        <div class="photo-mosaic" aria-label="Mosaik dokumentasi kebun mini">
+          <div class="mosaic-item mosaic-big">
+            <img src="assets/img/hasil-lebar.jpg" width="1100" height="825" loading="lazy" alt="Bedeng GreenCorner dilihat dari sisi lain dengan tanaman berjajar">
+          </div>
+          <div class="mosaic-item mosaic-tall">
+            <img src="assets/img/asoka.jpg" width="825" height="1100" loading="lazy" alt="Bunga Asoka putih yang mekar dengan sekam di sekitarnya">
+          </div>
+          <div class="mosaic-item mosaic-square" style="display: flex; flex-direction: column; gap: 0.85rem; background: none; border: none; box-shadow: none;">
+            <div style="border-radius: 16px; overflow: hidden; height: calc(50% - 0.425rem); border: 2px solid var(--surface); box-shadow: 0 4px 14px rgba(0,0,0,0.06);">
+              <img src="assets/img/ukur-lahan.jpg" width="1100" height="825" loading="lazy" alt="Anggota kelompok mengukur panjang bedeng sebelum menanam" style="height: 100%; object-fit: cover;">
+            </div>
+            <div style="border-radius: 16px; overflow: hidden; height: calc(50% - 0.425rem); border: 2px solid var(--surface); box-shadow: 0 4px 14px rgba(0,0,0,0.06);">
+              <img src="assets/img/hasil-dekat.jpg" width="1100" height="825" loading="lazy" alt="Bedeng berisi tanah gembur dan tanaman yang baru ditanam" style="height: 100%; object-fit: cover;">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Jelajahi Website: Daftar Bergaris -->
+      <section class="explore-section" aria-labelledby="explore-heading">
+        <h2 id="explore-heading">Jelajahi website</h2>
+
+        <div class="explore-list">
+          <a href="tentang.html" class="explore-row">
+            <span class="explore-name">Tentang</span>
+            <span class="explore-desc">Latar belakang, tujuan, dan manfaat proyek</span>
+            <span class="explore-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+
+          <a href="kelompok.html" class="explore-row">
+            <span class="explore-name">Kelompok</span>
+            <span class="explore-desc">Enam anggota yang mengerjakan proyek ini</span>
+            <span class="explore-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+
+          <a href="alat-bahan.html" class="explore-row">
+            <span class="explore-name">Alat dan Bahan</span>
+            <span class="explore-desc">Yang kami siapkan dan langkah menanamnya</span>
+            <span class="explore-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+
+          <a href="tanaman.html" class="explore-row">
+            <span class="explore-name">Tanaman</span>
+            <span class="explore-desc">Mengenal bunga Asoka dan Aster</span>
+            <span class="explore-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+
+          <a href="dokumentasi.html" class="explore-row">
+            <span class="explore-name">Dokumentasi</span>
+            <span class="explore-desc">Foto dari perencanaan sampai hasil</span>
+            <span class="explore-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+
+          <a href="faq.html" class="explore-row">
+            <span class="explore-name">FAQ</span>
+            <span class="explore-desc">Pertanyaan umum dan asisten tanya jawab</span>
+            <span class="explore-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+
+          <a href="penutup.html" class="explore-row">
+            <span class="explore-name">Penutup</span>
+            <span class="explore-desc">Kesimpulan, saran, dan ucapan terima kasih</span>
+            <span class="explore-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Pager Navigasi Bawah -->
+      <nav class="page-pager" aria-label="Navigasi Halaman">
+        <a href="tentang.html" class="pager-btn next">
+          <span>Berikutnya: Tentang</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>GreenCorner, proyek kebun mini kelas X-TE 3, SMK Negeri 2 Purwokerto</p>
+    </div>
+  </footer>
+
+  <button type="button" class="back-to-top" aria-label="Kembali ke atas">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
